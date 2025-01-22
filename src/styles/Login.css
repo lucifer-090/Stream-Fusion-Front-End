@@ -1,0 +1,109 @@
+/* General Styling for Login Container */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Gradient background */
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    color: #fff; /* Text color for better contrast */
+}
+
+/* Login Heading */
+.login-container h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for heading */
+}
+
+/* Form Styling */
+form {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 40px;
+    width: 100%;
+    max-width: 500px; /* Wider form */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for a modern look */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Increased spacing between elements */
+}
+
+/* Input Fields */
+form input {
+    padding: 15px 20px; /* Larger input fields */
+    font-size: 18px; /* Bigger font size */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Focus Effect for Inputs */
+form input:focus {
+    border-color: #6e8efb; /* Matches gradient color */
+    outline: none;
+    box-shadow: 0 0 8px rgba(110, 142, 251, 0.5); /* Subtle glow on focus */
+}
+
+/* Button Styling */
+form button {
+    padding: 15px;
+    font-size: 18px; /* Bigger button text */
+    color: #fff;
+    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Gradient button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Button Hover Effect */
+form button:hover {
+    box-shadow: 0 6px 12px rgba(110, 142, 251, 0.4); /* Glow on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Button Active Effect */
+form button:active {
+    transform: translateY(2px); /* Slight press effect */
+}
+
+/* Additional Text for Links (Optional) */
+form .additional-links {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form .additional-links a {
+    color: #6e8efb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+form .additional-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .login-container h2 {
+        font-size: 28px;
+    }
+
+    form {
+        padding: 30px;
+    }
+
+    form input {
+        font-size: 16px;
+    }
+
+    form button {
+        font-size: 16px;
+    }
+}
