@@ -1,0 +1,100 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #8bdaf5;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 0px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 220px; /* Increased width */
+    height: 80px; /* Increased height */
+    margin-right: 15px; /* Optional: Adjust spacing between logo and text */
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .nav a:hover {
+    background-color: #f39c12;
+    text-decoration: none;
+  }
+
+ /* Adjusted Search Bar Styling */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  position: relative;  
+  width: 40%;
+  max-width: 1400px; /* Optional: Set a max width for the search bar */
+  margin: 0 auto; /* Center align the search bar */
+  margin-top: 15px;
+}
+
+
+/* Input Styling */
+.search-bar input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  padding-right: 40px; /* Add space for the icon */
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #6a11cb; /* Focused border color */
+  box-shadow: 0 0 8px rgba(106, 17, 203, 0.3); /* Subtle glow */
+}
+
+/* Adjusted Search Icon Button */
+.search-icon {
+  /* position:relative; */
+  /* bottom: 54px; */
+  /* left: 225px; Adjust to align inside the input */
+  /* top: -50%; */
+  /* transform: translateY(-50%); */
+  background: none;
+  /* bottom: 10px; */
+  cursor: pointer;
+  color: #555;
+  font-size: 28px; /* Slightly larger icon size */
+  transition: color 0.3s ease;
+}
+
+/* .search-icon :hover {
+  background-color: #285db9; 
+  
+} */
+
+/* Optional: Adjust the alignment for smaller screens */
+@media (max-width: 768px) {
+  .search-bar-container {
+    width: 80%; /* Make the search bar smaller on small screens */
+  }
+}
+  
