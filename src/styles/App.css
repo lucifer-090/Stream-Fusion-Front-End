@@ -17,6 +17,15 @@ body {
     background-color: #f9f9f9;
   }
   
+  /* Links */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
   
   /* Buttons */
   button {
@@ -30,6 +39,14 @@ body {
     transition: background-color 0.3s;
   }
   
+  button:hover {
+    background-color: #d9780e;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
   
   /* Form Inputs */
   input, textarea {
