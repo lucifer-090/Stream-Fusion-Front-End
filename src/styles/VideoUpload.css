@@ -1,77 +1,105 @@
-
+/* General Styling for Upload Container */
 .upload-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url('../UsedImages/uploadbg.png');
     background-size: cover;
     background-position: center;
+    font-family: 'Poppins', sans-serif;
     padding: 20px;
-    color: #fff;
+    color: #fff; /* Text color for better contrast */
 }
 
-
+/* Upload Heading */
 .upload-container h2 {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for heading */
 }
-
 
 form {
-    background: rgb(247, 245, 245); 
-    backdrop-filter: blur(10px); 
+    background: rgb(247, 245, 245); /* Transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
     padding: 30px;
     width: 100%;
-    max-width: 450px; 
+    max-width: 450px; /* Slightly larger width to accommodate inputs */
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Modern shadow */
     display: flex;
     flex-direction: column;
-    gap: 20px; 
-    color: #333; 
+    gap: 20px; /* Spacing between elements */
+    color: #333; /* Text color for inputs */
 }
 
+/* Input Fields */
 form input[type="text"],
 form textarea,
 form input[type="file"] {
     padding: 15px 20px;
-    font-size: 16px; 
+    font-size: 16px; /* Standard input fields */
     border: 1px solid #ddd;
     border-radius: 8px;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.8); 
-    resize: none; 
+    background-color: rgba(255, 255, 255, 0.8); /* Subtle semi-transparent background */
+    resize: none; /* Prevent textarea resize */
 }
 
-
+/* Textarea for Description */
 form textarea {
-    min-height: 100px; 
+    min-height: 100px; /* Adjust height for textarea */
 }
 
-
+/* Focus Effect for Inputs */
 form input:focus,
 form textarea:focus {
-    border-color: #6a11cb; 
+    border-color: #6a11cb; /* Matches gradient color */
     outline: none;
-    box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); 
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Subtle glow on focus */
 }
 
-
+/* Button Styling */
 form button {
     padding: 15px;
-    font-size: 18px;
+    font-size: 18px; /* Bigger button text */
     color: #fff;
-    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Gradient button */
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
+/* Button Hover Effect */
+form button:hover {
+    box-shadow: 0 6px 12px rgba(106, 17, 203, 0.4); /* Glow on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
 
+/* Button Active Effect */
+form button:active {
+    transform: translateY(2px); /* Slight press effect */
+}
 
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .upload-container h2 {
+        font-size: 28px;
+    }
 
+    form {
+        padding: 20px;
+    }
 
+    form input,
+    form textarea {
+        font-size: 14px;
+    }
+
+    form button {
+        font-size: 16px;
+    }
+}
