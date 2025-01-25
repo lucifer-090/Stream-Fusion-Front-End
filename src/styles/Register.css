@@ -1,0 +1,54 @@
+/* General Styling for Register Container */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    color: #fff; /* Text color for better contrast */
+}
+
+/* Register Heading */
+.register-container h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for heading */
+}
+
+/* Form Styling */
+form {
+    background: rgba(255, 255, 255, 0.3); /* Transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Modern shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between elements */
+    color: #333; /* Text color for inputs */
+}
+
+/* Input Fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: 15px 20px;
+    font-size: 16px; /* Standard input fields */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8); /* Subtle semi-transparent background */
+}
+
+/* Button Hover Effect */
+form button:hover {
+    box-shadow: 0 6px 12px rgba(106, 17, 203, 0.4); /* Glow on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
