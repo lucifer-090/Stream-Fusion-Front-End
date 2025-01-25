@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
+    background-image: url('../UsedImages/loginbg.png');
     font-family: 'Poppins', sans-serif;
     padding: 20px;
     color: #fff; /* Text color for better contrast */
@@ -25,7 +25,7 @@ form {
     backdrop-filter: blur(10px); /* Blur effect */
     padding: 30px;
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Slightly smaller width */
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Modern shadow */
     display: flex;
@@ -46,9 +46,51 @@ form input[type="password"] {
     background-color: rgba(255, 255, 255, 0.8); /* Subtle semi-transparent background */
 }
 
+/* Focus Effect for Inputs */
+form input:focus {
+    border-color: #6a11cb; /* Matches gradient color */
+    outline: none;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.5); /* Subtle glow on focus */
+}
+
+/* Button Styling */
+form button {
+    padding: 15px;
+    font-size: 18px; /* Bigger button text */
+    color: #fff;
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* Gradient button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
 /* Button Hover Effect */
 form button:hover {
     box-shadow: 0 6px 12px rgba(106, 17, 203, 0.4); /* Glow on hover */
     transform: translateY(-2px); /* Slight lift */
 }
 
+/* Button Active Effect */
+form button:active {
+    transform: translateY(2px); /* Slight press effect */
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .register-container h2 {
+        font-size: 28px;
+    }
+
+    form {
+        padding: 20px;
+    }
+
+    form input {
+        font-size: 14px;
+    }
+
+    form button {
+        font-size: 16px;
+    }
+}
