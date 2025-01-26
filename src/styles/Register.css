@@ -37,7 +37,9 @@ form {
 /* Input Fields */
 form input[type="text"],
 form input[type="email"],
-form input[type="password"] {
+form input[type="password"]
+form input[type="contact"]
+form input[type="address"] {
     padding: 15px 20px;
     font-size: 16px; /* Standard input fields */
     border: 1px solid #ddd;
