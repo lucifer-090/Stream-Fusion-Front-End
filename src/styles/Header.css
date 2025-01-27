@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: #8bdaf5;
+    background-color: #0f2133;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-bottom: 2px solid #f39c12;
@@ -28,19 +28,37 @@
   }
   
   .nav a {
-    color: white;
+    color: #FFFAC0;
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
     padding: 8px 15px;
     border-radius: 5px;
     transition: background-color 0.3s;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease;
   }
   
   .nav a:hover {
-    background-color: #f39c12;
-    text-decoration: none;
+    color: #f0d32d;
+    text-decoration: none; /* Smooth hover effect */
+    transform: scale(1.1);
   }
+
+  /* Upload Icon Styling */
+.upload-icon {
+  position: relative;
+  top: -10px; /* Moves the icon upwards by 10px */
+  width: 50px; /* Icon size */
+  height: 50px;
+  cursor: pointer;
+  
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.upload-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
 
  /* Adjusted Search Bar Styling */
 .search-bar-container {

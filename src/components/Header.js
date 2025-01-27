@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import logo from '../UsedImages/logo.png';
+import logo from '../UsedImages/logo1.png';
+import uploadIcon from '../UsedImages/upload1.png';
 import '../styles/Header.css';
 
 const Header = () => {
@@ -28,9 +29,15 @@ const Header = () => {
       )}
       <nav className="nav">
         <Link to="/">Home</Link>
-        <Link to="/upload">Upload</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
+        <Link to="/upload">
+        <img
+        src={uploadIcon}
+        alt='Upload'
+        className='upload-icon'
+        />
+        </Link>
       </nav>
     </header>
   );
