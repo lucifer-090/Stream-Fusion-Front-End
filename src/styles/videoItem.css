@@ -1,0 +1,32 @@
+.video-list {
+    padding: 20px;
+  }
+  
+  .video-list h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .video-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .video-list li {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-list li h2 {
+    margin: 0 0 10px;
+  }
+  
+  .video-list li video {
+    display: block;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  

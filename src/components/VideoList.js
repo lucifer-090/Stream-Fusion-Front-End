@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import VideoItem from './VideoItem'; // Assuming this component renders individual video items
+import axios from 'axios';
 
 const VideoList = () => {
   const [videos, setVideos] = useState([]); // Initialize videos as an empty array
@@ -7,7 +8,8 @@ const VideoList = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await fetch('/api/uploads'); // Replace with your API endpoint
+        // const response = await fetch('/api/uploads'); // Replace with your API endpoint
+        const response = await axios.get('http://localhost:9999/api/videos/videoList');
         const data = await response.json();
         setVideos(data); // Ensure data is an array
       } catch (error) {
