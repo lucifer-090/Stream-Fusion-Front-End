@@ -36,7 +36,7 @@ const VideoList = () => {
             <div key={video.id} className="video-card">
               <div className="thumbnail-container">
                 <video
-                  src={`http://localhost:9999${video.videoPath}`}
+                  src={`http://localhost:8080${video.videoPath}`}
                   muted
                   loop
                   className="thumbnail"
