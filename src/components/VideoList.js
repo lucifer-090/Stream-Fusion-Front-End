@@ -1,36 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import VideoItem from './VideoItem'; // Assuming this component renders individual video items
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { fetchVideos } from "../api/videoService";
+import "../styles/VideoList.css";
 
 const VideoList = () => {
-  const [videos, setVideos] = useState([]); // Initialize videos as an empty array
+  const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVideos = async () => {
+    const getVideos = async () => {
       try {
-        // const response = await fetch('/api/uploads'); // Replace with your API endpoint
-        const response = await axios.get('http://localhost:9999/api/videos/videoList');
-        const data = await response.json();
-        setVideos(data); // Ensure data is an array
+        console.log("Calling fetchVideos()..."); // Debugging log
+        const videoData = await fetchVideos();
+        console.log("Received videos:", videoData); // Debugging log
+        setVideos(videoData);
       } catch (error) {
-        console.error('Error fetching videos:', error);
+        console.error("Error loading videos:", error);
+      }finally {
+        setLoading(false);
       }
     };
 
-    fetchVideos();
+    getVideos();
   }, []);
 
   return (
-    <div>
-      {Array.isArray(videos) && videos.length > 0 ? (
-        videos.map((video) => (
-          <VideoItem key={video.id} video={video} />
-        ))
+    <div className="video-list-container">
+      <h2>Uploaded Videos</h2>
+      {loading ? (
+        <p className="loading">Loading videos...</p>
+      ) : videos.length === 0 ? (
+        <p className="no-videos">No videos available. Please upload some videos!</p>
       ) : (
-        <p>No videos uploaded yet. Check back later or upload your own!</p>
+        <div className="video-grid">
+          {videos.map((video) => (
+            <div key={video.id} className="video-card">
+              <div className="thumbnail-container">
+                <video
+                  src={`http://localhost:9999${video.videoPath}`}
+                  muted
+                  loop
+                  className="thumbnail"
+                  onMouseOver={(e) => e.target.play()}
+                  onMouseOut={(e) => e.target.pause()}
+                  poster="/path/to/placeholder.jpg"
+                />
+                <div className="play-button">▶</div>
+              </div>
+              <div className="video-details">
+                <h3 className="video-title">{video.title}</h3>
+                <p className="video-description">{video.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
+
   );
 };
 
 export default VideoList;
+
+
+
+

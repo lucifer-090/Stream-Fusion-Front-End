@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginUser } from '../utils/api';
+import { loginUser } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await loginUser(formData);
-      localStorage.setItem('token', response.data.token); // Store token for authentication
+      localStorage.setItem('token', response.token); // Store token for authentication
       alert('Login successful!');
       navigate('/'); // Redirect to home page
     } catch (error) {

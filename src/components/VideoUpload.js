@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { uploadVideo } from '../utils/api';
+import { uploadVideo } from '../api/api';
 import '../styles/VideoUpload.css';
 
 const VideoUpload = () => {

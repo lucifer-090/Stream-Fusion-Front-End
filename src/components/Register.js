@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { registerUser } from '../utils/api';
+import { registerUser } from '../api/api';
 import '../styles/Register.css';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
