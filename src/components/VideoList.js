@@ -25,8 +25,9 @@ const VideoList = () => {
     getVideos();
   }, []);
 
-  const handleVideoClick = (id) => {
-    navigate(`/videos/${id}`); // Navigate to VideoPlayer page
+  const handleVideoClick = (selectedVideo) => {
+    console.log("Navigating with video data:", selectedVideo); // Debugging log
+    navigate(`/videos/${selectedVideo.id}`, {state: {video: selectedVideo}}); // Navigate to VideoPlayer page
   };
 
   return (

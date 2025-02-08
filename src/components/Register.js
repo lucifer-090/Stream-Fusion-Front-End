@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api/api';
 import '../styles/Register.css';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({ fullname: '', email: '', password: '', contact: '', address: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,6 +18,7 @@ const Register = () => {
       const response = await registerUser(formData);
       alert('Registration successful!');
       setFormData({ username: '', email: '', password: '', contact: '', address: '' });
+      navigate('/login'); // Redirect to login page
     } catch (error) {
       alert('Registration failed. Please try again.');
     }
