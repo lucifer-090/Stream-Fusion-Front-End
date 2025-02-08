@@ -28,9 +28,14 @@ export const registerUser = async (userData) => {
   return await response.json();
 };
 
-export const uploadVideo = async (formData) => {
+export const uploadVideo = async (formData, options) => {
+  const token = localStorage.getItem('token');
+
   const response = await fetch('http://localhost:8080/videos/upload', {
     method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`, // Pass the token here
+    },
     body: formData, // FormData automatically sets headers
   });
 

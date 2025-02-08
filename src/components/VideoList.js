@@ -26,7 +26,6 @@ const VideoList = () => {
   }, []);
 
   const handleVideoClick = (selectedVideo) => {
-    console.log("Navigating with video data:", selectedVideo); // Debugging log
     navigate(`/videos/${selectedVideo.id}`, {state: {video: selectedVideo}}); // Navigate to VideoPlayer page
   };
 
@@ -60,6 +59,7 @@ const VideoList = () => {
               <div className="video-details">
                 <h3 className="video-title">{video.title}</h3>
                 <p className="video-description">{video.description}</p>
+                <p className="uploaded-by">Uploaded by: {video.uploadedBy}</p> {/* Display uploader's name */}
               </div>
             </div>
           ))}

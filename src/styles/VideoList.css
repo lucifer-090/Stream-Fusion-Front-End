@@ -136,6 +136,12 @@
   text-overflow: ellipsis;
 }
 
+.uploaded-by {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .video-card {
