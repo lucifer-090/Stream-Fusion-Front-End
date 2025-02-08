@@ -13,7 +13,7 @@ const VideoItem = ({ video }) => {
             <h2>{video.title}</h2>
             <p>{video.description}</p>
             <video controls width="400">
-              <source src={`http://localhost:9999/${video.path}`} type="video/mp4" />
+              <source src={`http://localhost:8080/${video.path}`} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </li>

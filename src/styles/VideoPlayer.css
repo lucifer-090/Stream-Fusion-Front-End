@@ -1,0 +1,31 @@
+.video-player-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .video-player {
+    width: 100%;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .video-player video {
+    width: 100%;
+    height: auto;
+  }
+  
+  .video-details h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .video-details p {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  

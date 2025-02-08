@@ -10,8 +10,9 @@
 /* Grid Styling */
 .video-grid {
   display: grid;
+  position: relative;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-  gap: 20px; /* Space between cards */
+  gap: 10px; /* Space between cards */
 }
 
 /* Video Card Styling */
@@ -82,14 +83,40 @@
   transition: background 0.3s ease;
 }
 
-.thumbnail-container .play-button:hover {
+/* Play button overlay */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensure it appears above the video */
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+
+.thumbnail-container:hover .play-button {
   background: rgba(255, 255, 255, 0.8);
   color: #000;
+  opacity: 2;
 }
 
 /* Video Details */
 .video-details {
-  padding: 15px;
+  background-color: rgb(16, 16, 16);
+  color: rgb(252, 250, 250);
+  text-align: start;
+  padding: 5px;
 }
 
 .video-title {
@@ -100,7 +127,7 @@
 
 .video-description {
   font-size: 0.9rem;
-  color: #ccc;
+  color: #000;
   margin-top: 5px;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* Limit text to 2 lines */
