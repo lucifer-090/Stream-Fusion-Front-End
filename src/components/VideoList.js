@@ -42,7 +42,7 @@ const VideoList = () => {
             <div
               key={video.id}
               className="video-card"
-              onClick={() => handleVideoClick(video.id)} // Handle video click
+              onClick={() => handleVideoClick(video)} // Handle video click
             >
               <div className="thumbnail-container">
                 <video

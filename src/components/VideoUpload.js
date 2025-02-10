@@ -30,7 +30,20 @@ const VideoUpload = () => {
     form.append('video', videoFile);
 
     try {
-      await uploadVideo(form, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const token = localStorage.getItem('token'); // Get token from localStorage
+
+      if (!token) {
+        alert('You must be logged in to upload a video!');
+        return;
+      }
+
+      // Send the video with the token for validation
+      await uploadVideo(form, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass token for backend validation
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       alert('Video uploaded successfully!');
     } catch (error) {
       alert('Failed to upload video. Please try again.');
