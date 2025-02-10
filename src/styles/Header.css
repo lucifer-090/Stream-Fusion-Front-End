@@ -1,16 +1,19 @@
 .header {
-    height: 84px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #0f2133;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-bottom: 2px solid #f39c12;
-    padding-bottom: 0px;
-    /* flex-wrap: wrap; Allow wrapping for smaller screens */
-  }
+  position: fixed; /* Fix the header to the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the entire width of the screen */
+  z-index: 1000; /* Make sure it stays above other elements */
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #0f2133; /* Dark background for the header */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #f39c12;
+}
   
   .logo {
     display: flex;
@@ -70,7 +73,7 @@
   width: 40%;
   max-width: 1400px; /* Optional: Set a max width for the search bar */
   margin: 0 auto; /* Center align the search bar */
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 
@@ -101,7 +104,7 @@
   cursor: pointer;
   color: #555;
   font-size: 30px; /* Slightly larger icon size */
-  top: -8px;
+  top: -5px;
   transition: 0.3s ease;
 }
 

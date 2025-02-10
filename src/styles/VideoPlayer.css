@@ -1,17 +1,21 @@
 .video-player-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
+  margin-top: 100px;
+  flex-direction: column; /* Stack content vertically */
+  align-items: start; /* Align content to the left */
   padding: 20px;
   background-color: #121212; /* Dark background */
   color: white; /* Text color */
   min-height: 100vh;
+  width: 100%; /* Full-width container */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .video-player {
-  width: 80%; /* Set width for the video player */
+  display: block;
+  width: 70%; /* Set width for the video player */
   max-width: 1200px; /* Ensure the video doesn't exceed the screen width */
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: black; /* Ensure a black background for the video */
   border-radius: 10px; /* Add rounded corners */
   overflow: hidden;
@@ -24,19 +28,33 @@
   outline: none;
 }
 
-.video-details {
-  text-align: center; /* Center-align the text below the video */
-  margin-top: 10px;
+.video-detail {
+  background-color: #1e1e1e; /* Match the card's background for consistency */
+  text-align: left; /* Align the text to the left */
+  width: 70%; /* Match the width of the video player */
+  max-width: 1200px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
 }
 
-.video-details h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+.title {
+  color: #FFFAC0;
+  font-size: 1.3rem;
+  /* margin-bottom: 5px; */
+  padding-left: 5px;
 }
 
-.video-details p {
-  font-size: 1.2rem;
-  color: #ccc;
+.video-detail p {
+  font-size: 1rem;
+  color: white;
+  padding-left: 10px;
+}
+
+.uploaded-by {
+  font-size: 1rem;
+  font-style: italic;
+  color: #FFFAC0;
 }
 
 @media (max-width: 768px) {
@@ -44,11 +62,15 @@
     width: 100%; /* Full width on small screens */
   }
 
-  .video-details h1 {
+  .video-detail {
+    width: 100%; /* Full width for small screens */
+  }
+
+  .video-detail h1 {
     font-size: 1.5rem; /* Adjust title size for smaller screens */
   }
 
-  .video-details p {
+  .video-detail p {
     font-size: 1rem; /* Adjust description size */
   }
 }

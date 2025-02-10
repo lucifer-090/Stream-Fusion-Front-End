@@ -31,10 +31,14 @@ export const registerUser = async (userData) => {
 export const uploadVideo = async (formData, options) => {
   const token = localStorage.getItem('token');
 
+  if (!token) {
+    throw new Error('Unauthorized: No token found');
+  }
+
   const response = await fetch('http://localhost:8080/videos/upload', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`, // Pass the token here
+      'Authorization': `Bearer ${token}`, // Pass the token here
     },
     body: formData, // FormData automatically sets headers
   });
