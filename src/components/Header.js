@@ -3,6 +3,8 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import logo from '../UsedImages/logo1.png';
 import uploadIcon from '../UsedImages/upload1.png';
 import profileIcon from "../UsedImages/userprofile.png"; // Add a profile icon
+import notificationIcon from '../UsedImages/notificationicon.png'; // Import your notification icon
+import '../styles/Header.css';
 import '../styles/Header.css';
 
 const Header = () => {
@@ -130,9 +132,19 @@ const Header = () => {
         </Link> */}
 
         {user && (
+          <>
+
+          <img
+          src={notificationIcon}
+          alt="Notifications"
+          className="nav-icon notification-icon"
+          onClick={() => navigate('/notifications')} // Navigate to notifications page
+          />
+
           <Link to="/upload">
             <img src={uploadIcon} alt="Upload" className="upload-icon" />
           </Link>
+          </>
         )}
 
         {/* Profile Dropdown */}
