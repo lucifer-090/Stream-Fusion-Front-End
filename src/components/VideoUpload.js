@@ -22,6 +22,11 @@ const VideoUpload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!videoFile) {
+      alert("Please select a video file!");
+      return;
+    }
+
     const form = new FormData();
     form.append('title', formData.title);
     form.append('description', formData.description);
@@ -41,10 +46,12 @@ const VideoUpload = () => {
       await uploadVideo(form, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass token for backend validation
-          'Content-Type': 'multipart/form-data',
+          // 'Content-Type': 'multipart/form-data',
         },
       });
       alert('Video uploaded successfully!');
+      setFormData({ title: '', description: '', category: '', tags: '' }); // Reset form
+      setVideoFile(null);
     } catch (error) {
       alert('Failed to upload video. Please try again.');
     }

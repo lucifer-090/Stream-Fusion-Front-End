@@ -28,7 +28,7 @@ export const registerUser = async (userData) => {
   return await response.json();
 };
 
-export const uploadVideo = async (formData, options) => {
+export const uploadVideo = async (formData) => {
   const token = localStorage.getItem('token');
 
   if (!token) {
@@ -39,6 +39,7 @@ export const uploadVideo = async (formData, options) => {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${token}`, // Pass the token here
+      // "Content-Type": "multipart/form-data", // Merge additional headers
     },
     body: formData, // FormData automatically sets headers
   });

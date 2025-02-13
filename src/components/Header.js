@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import logo from '../UsedImages/logo1.png';
 import uploadIcon from '../UsedImages/upload1.png';
@@ -16,15 +16,46 @@ const Header = () => {
   const [isProfileOpen, setProfileOpen] = useState(false); // State for profile dropdown
   const [user, setUser] = useState(null); // User authentication state
 
+  const [notifications, setNotifications] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => setShowDropdown(!showDropdown);
+
+
   // Simulate fetching user data from localStorage/sessionStorage
   useEffect(() => {
     const token = localStorage.getItem('token');
     const storedUser = localStorage.getItem('user');
     if (token && storedUser) {
       setUser(JSON.parse(storedUser)); // Parse stored user data
+      fetchNotifications();
     }
   }, []);
 
+  // Fetch notifications
+  const fetchNotifications = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/notifications");
+      if (!response.ok) throw new Error("Failed to fetch notifications");
+      const data = await response.json();
+      setNotifications(data);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Toggle the profile dropdown menu
   const toggleProfileMenu = () => {
@@ -134,12 +165,32 @@ const Header = () => {
         {user && (
           <>
 
-          <img
-          src={notificationIcon}
-          alt="Notifications"
-          className="nav-icon notification-icon"
-          onClick={() => navigate('/notifications')} // Navigate to notifications page
-          />
+          {/* Notification Icon */}
+          <div className="notification-container" ref={dropdownRef}>
+              <img
+                src={notificationIcon}
+                alt="Notifications"
+                className="nav-icon notification-icon"
+                onClick={toggleDropdown}
+              />
+              {notifications.length > 0 && <span className="notification-badge">{notifications.length}</span>}
+
+              {/* Notification Dropdown */}
+              {showDropdown && (
+                <div className="notification-dropdown">
+                  {notifications.length === 0 ? (
+                    <p>No new notifications</p>
+                  ) : (
+                    notifications.map((notification, index) => (
+                      <div key={index} className="notification-item">
+                        {notification.message}
+                      </div>
+                    ))
+                  )}
+                </div>
+              )}
+            </div>
+
 
           <Link to="/upload">
             <img src={uploadIcon} alt="Upload" className="upload-icon" />

@@ -59,7 +59,7 @@ const VideoList = () => {
               <div className="video-details">
                 <h3 className="video-title">{video.title}</h3>
                 <p className="video-description"> - {video.description}</p>
-                <p className="Uploaded-by">Uploaded by: {video.uploadedBy}</p> {/* Display uploader's name */}
+                <p className="uploaded-by">Uploaded by: {video.uploader ? video.uploader.fullname : 'Unknown'}</p> {/* Display uploader's name */}
               </div>
             </div>
           ))}
