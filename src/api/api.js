@@ -51,3 +51,25 @@ export const uploadVideo = async (formData) => {
 
   return await response.json();
 };
+
+
+export const fetchNotifications = async () => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    throw new Error('Unauthorized: No token found');
+  }
+
+  const response = await fetch('http://localhost:8080/notifications', {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorDetails = await response.text();
+    throw new Error(`Failed to fetch notifications: ${errorDetails}`);
+  }
+
+  return await response.json();
+};

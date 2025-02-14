@@ -53,7 +53,7 @@ const VideoPlayer = () => {
       <div className="video-detail">
 
         <p> - {video.description}</p>
-        <p className="uploaded-by">Uploaded by: {video.uploadedBy}</p> {/* Display uploader's name */}
+        <p className="uploaded-by">Uploaded by: {video.uploader ? video.uploader.fullname : 'Unknown'}</p> {/* Display uploader's name */}
 
       </div>
 
