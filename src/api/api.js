@@ -49,7 +49,12 @@ export const uploadVideo = async (formData) => {
     throw new Error(`Failed to upload video: ${errorDetails}`);
   }
 
-  return await response.json();
+  const videoData = await response.json();
+
+  // 🔥 Fetch the latest notifications after uploading
+  await fetchNotifications();
+
+  return videoData;
 };
 
 
