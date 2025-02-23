@@ -1,110 +1,208 @@
-/* General Styling for Login Container */
+/* Container styling with a modern gradient background */
 .login-container {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    /* background: linear-gradient(135deg, #6e8efb, #a777e3); Gradient background */
-    background-image: url('../UsedImages/loginbg.png');
-    font-family: 'Poppins', sans-serif;
+    /* background: linear-gradient(135deg, #1a1c20 0%, #0f1215 100%); */
+    background-image:url('../UsedImages/loginbg.png');
     padding: 20px;
-    color: #fff; /* Text color for better contrast */
+    font-family: 'Inter', sans-serif;
 }
 
-/* Login Heading */
-.login-container h2 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for heading */
-}
-
-/* Form Styling */
-form {
-    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+/* Form container with glassmorphism effect */
+.login-container form {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 500px; /* Wider form */
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow for a modern look */
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Increased spacing between elements */
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+    animation: formAppear 0.5s ease-out;
 }
 
-/* Input Fields */
-form input {
-    padding: 15px 20px; /* Larger input fields */
-    font-size: 18px; /* Bigger font size */
-    border: 1px solid #ddd;
+/* Heading styles */
+.login-container h2 {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Input container */
+.input-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* Input field styling */
+.input-container input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.input-container input:focus {
+    border-color: #6e8efb;
+    box-shadow: 0 0 0 4px rgba(110, 142, 251, 0.1);
+}
+
+/* Input labels */
+.input-container label {
+    position: absolute;
+    left: 15px;
+    top: -10px;
+    background: #1a1c20;
+    padding: 0 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
     transition: all 0.3s ease;
 }
 
-/* Focus Effect for Inputs */
-form input:focus {
-    border-color: #6e8efb; /* Matches gradient color */
-    outline: none;
-    box-shadow: 0 0 8px rgba(110, 142, 251, 0.5); /* Subtle glow on focus */
+/* Password strength indicator */
+.password-strength {
+    margin-top: 8px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-/* Button Styling */
-form button {
+.strength-meter {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s ease;
+}
+
+.strength-weak { width: 33.33%; background: #ff4757; }
+.strength-medium { width: 66.66%; background: #ffa502; }
+.strength-strong { width: 100%; background: #2ed573; }
+
+.password-feedback {
+    margin-top: 6px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Button styling */
+.login-container button {
+    width: 100%;
     padding: 15px;
-    font-size: 18px; /* Bigger button text */
-    color: #fff;
-    background: linear-gradient(135deg, #6e8efb, #a777e3); /* Gradient button */
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
     border: none;
     border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Button Hover Effect */
-form button:hover {
-    box-shadow: 0 6px 12px rgba(110, 142, 251, 0.4); /* Glow on hover */
-    transform: translateY(-2px); /* Slight lift */
+.login-container button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(110, 142, 251, 0.3);
 }
 
-/* Button Active Effect */
-form button:active {
-    transform: translateY(2px); /* Slight press effect */
+.login-container button:active {
+    transform: translateY(0);
 }
 
-/* Additional Text for Links (Optional) */
-form .additional-links {
-    font-size: 14px;
-    color: #555;
+/* Social login section */
+.social-login {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-login p {
+    color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
 }
 
-form .additional-links a {
-    color: #6e8efb;
-    text-decoration: none;
-    font-weight: bold;
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
-form .additional-links a:hover {
-    text-decoration: underline;
+.social-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Responsive Design for Small Screens */
-@media (max-width: 768px) {
+.social-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes formAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+    .login-container {
+        padding: 15px;
+    }
+
+    .login-container form {
+        padding: 25px;
+    }
+
     .login-container h2 {
-        font-size: 28px;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
     }
 
-    form {
-        padding: 30px;
+    .input-container input {
+        padding: 12px;
+        font-size: 14px;
     }
 
-    form input {
-        font-size: 16px;
-    }
-
-    form button {
-        font-size: 16px;
+    .login-container button {
+        padding: 12px;
+        font-size: 14px;
     }
 }

@@ -25,14 +25,7 @@ const Header = () => {
 
     if (token && storedUser) {
       setUser(JSON.parse(storedUser));
-
-      // Load notifications from localStorage if available
-      // const storedNotifications = localStorage.getItem("notifications");
-      // if (storedNotifications) {
-      //   setNotifications(JSON.parse(storedNotifications));
-      // } else {
-      //   fetchNotifications(); // Fetch fresh notifications if not in storage
-      // }
+      
       localStorage.removeItem("notifications"); //  Clear old cached notifications
       fetchNotifications(); // Fetch fresh notifications
 
