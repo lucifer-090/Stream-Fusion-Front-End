@@ -78,3 +78,27 @@ export const fetchNotifications = async () => {
 
   return await response.json();
 };
+
+// ✅ Fetch all videos
+export const fetchVideos = async () => {
+  const response = await fetch('http://localhost:8080/videos/videoList');
+
+  if (!response.ok) {
+    const errorDetails = await response.text();
+    throw new Error(`Failed to fetch videos: ${errorDetails}`);
+  }
+
+  return await response.json();
+};
+
+// ✅ Fetch remaining videos (excluding the current video)
+export const fetchRemainingVideos = async (videoId) => {
+  const response = await fetch(`http://localhost:8080/videos/remaining/${videoId}`);
+
+  if (!response.ok) {
+    const errorDetails = await response.text();
+    throw new Error(`Failed to fetch remaining videos: ${errorDetails}`);
+  }
+
+  return await response.json();
+};
