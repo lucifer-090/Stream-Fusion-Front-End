@@ -1,10 +1,6 @@
 import '../styles/videoItem.css';
 const VideoItem = ({ video }) => {
     return (
-      // <div>
-      //   <h3>{video.title}</h3>
-      //   <p>{video.description}</p>
-      // </div>
       <div className="video-list">
       <h1>Video List</h1>
       <ul>

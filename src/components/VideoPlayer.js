@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from "react"; // Add useEffect and useState
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import "../styles/VideoPlayer.css";
@@ -9,15 +7,11 @@ const VideoPlayer = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
-  // If video data is passed via navigation
-  // const video = location.state?.video;
   const [video, setVideo] = useState(location.state?.video || null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [remainingVideos, setRemainingVideos] = useState([]);
 
-  // const [relatedVideos, setRelatedVideos] = useState([]); // ✅ Store related videos
 
 
   console.log("Received video data:", video); // Debugging log
@@ -35,13 +29,13 @@ const VideoPlayer = () => {
       fetchVideo();
   }, [id]);
 
-  // ✅ Fetch comments for the video
+  // Fetch comments for the video
   useEffect(() => {
     const fetchComments = async () => {
       try {
         const response = await fetch(`http://localhost:8080/comments/${id}`);
         const data = await response.json();
-        console.log("Fetched comments:", data); // ✅ Debugging log
+        console.log("Fetched comments:", data); // Debugging log
 
         // setComments(data);
         setComments(Array.isArray(data) ? data : []);
@@ -53,26 +47,6 @@ const VideoPlayer = () => {
     fetchComments();
   }, [id]);
 
-  // Fetch related videos
-  // useEffect(() => {
-  //   const fetchRelatedVideos = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:8080/api/videos/related/${id}`);
-
-  //       if (!response.ok){
-  //         throw new Error("Failed to fetch related videos");
-  //       }
-  //       const data = await response.json();
-  //       console.log("Fetched related videos:", data);
-
-  //       setRelatedVideos(Array.isArray(data) ? data : []);
-  //     } catch (error) {
-  //       console.error("Error fetching related videos:", error);
-  //     }
-  //   };
-
-  //   fetchRelatedVideos();
-  // }, [id]);
 
   useEffect(() => {
     const fetchRemainingVideos = async () => {
@@ -87,7 +61,7 @@ const VideoPlayer = () => {
         console.log("Fetched remaining videos:", data);
 
         if (Array.isArray(data)) {
-          setRemainingVideos(data); // ✅ Store remaining videos in state
+          setRemainingVideos(data); // Store remaining videos in state
         } else {
           console.error("Error: Data is not an array", data);
         }
@@ -99,7 +73,7 @@ const VideoPlayer = () => {
     fetchRemainingVideos();
   }, [id]);
 
-  // ✅ Handle adding a new comment
+  // Handle adding a new comment
   const handleAddComment = async () => {
     if (!newComment.trim()) {
       alert("Comment cannot be empty!");
@@ -126,9 +100,9 @@ const VideoPlayer = () => {
       if (response.ok) {
         throw new Error("Failed to post comment");
       }
-      const newCommentData = await response.json(); // ✅ Fetch only new comment
-      
-      setComments((prevComments) => [newCommentData, ...prevComments]); // ✅ Append instead of overwrite
+      const newCommentData = await response.json(); // Fetch only new comment
+
+      setComments((prevComments) => [newCommentData, ...prevComments]); // Append instead of overwrite
       setNewComment(""); // Clear input after posting
 
     } catch (error) {
@@ -192,7 +166,7 @@ const VideoPlayer = () => {
           </div>
         </div>
       </div>
-      {/* ✅ Remaining Videos Sidebar */}
+      {/* Remaining Videos Sidebar */}
       <div className="remaining-videos">
         <h4>More Videos</h4>
         {remainingVideos.length === 0 ? (
@@ -204,18 +178,13 @@ const VideoPlayer = () => {
               className="remaining-video-item"
               onClick={() => navigate(`/videos/${video.id}`, { state: { video } })}
             >
-              {/* <img
-                src={`http://localhost:8080${video.videoPath}`}
-                alt={video.title}
-                className="remaining-thumbnail"
-              /> */}
               <video
                 src={`http://localhost:8080${video.videoPath}`}
                 muted
                 loop
                 className="remaining-thumbnail"
-                onMouseOver={(e) => e.target.play()} // ✅ Play video on hover
-                onMouseOut={(e) => e.target.pause()} // ✅ Pause video on hover out
+                onMouseOver={(e) => e.target.play()} // Play video on hover
+                onMouseOut={(e) => e.target.pause()} // Pause video on hover out
               />
               <div className="play-button">
                 ▶️

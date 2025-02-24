@@ -54,8 +54,6 @@ const Header = () => {
       // Update state with fresh notifications
       setNotifications(data);
 
-      // Store fresh notifications in localStorage (to persist)
-      // localStorage.setItem("notifications", JSON.stringify(data));
 
     } catch (error) {
       console.error("Error fetching notifications:", error);
