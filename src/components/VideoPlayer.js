@@ -186,9 +186,9 @@ const VideoPlayer = () => {
                 onMouseOver={(e) => e.target.play()} // Play video on hover
                 onMouseOut={(e) => e.target.pause()} // Pause video on hover out
               />
-              <div className="play-button">
+              {/* <div className="play-button">
                 ▶️
-              </div>
+              </div> */}
               <div className="remaining-video-info">
                 <h5>{video.title}</h5>
                 {/* <p> - {video.description}</p> */}

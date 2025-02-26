@@ -41,6 +41,7 @@
   height: 170px; /* Fixed height for consistent layout */
   overflow: hidden;
   position: relative; /* For overlay */
+  border-radius: 8px;
 }
 
 .thumbnail-container video {
@@ -67,7 +68,7 @@
 }
 
 /* Play Button Overlay */
-.thumbnail-container .play-button {
+/* .thumbnail-container .play-button {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -84,7 +85,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: background 0.3s ease;
-}
+} */
 
 /* Play button overlay */
 .play-button {
@@ -154,7 +155,7 @@
 .Uploaded-by {
   font-size: 0.9rem;
   font-style: italic; /* Add emphasis with italic styling */
-  color: #f0ac2db5; 
+  color: #FFFAC0; 
   margin: 2px 0 0; /* Add some margin for spacing */
   text-align: left; /* Align the text to the left */
 }

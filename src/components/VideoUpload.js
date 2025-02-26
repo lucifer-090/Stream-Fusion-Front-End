@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { uploadVideo } from '../api/api';
+import { useNavigate } from 'react-router-dom';
 import '../styles/VideoUpload.css';
 
 const VideoUpload = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -46,12 +48,20 @@ const VideoUpload = () => {
       await uploadVideo(form, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass token for backend validation
-          // 'Content-Type': 'multipart/form-data',
+          
         },
       });
       alert('Video uploaded successfully!');
-      setFormData({ title: '', description: '', category: '', tags: '' }); // Reset form
+      setFormData({ 
+        title: '', 
+        description: '', 
+        category: '', 
+        tags: '' }); // Reset form
       setVideoFile(null);
+
+      // Navigate to VideoList page
+      navigate("/");
+
     } catch (error) {
       alert('Failed to upload video. Please try again.');
     }

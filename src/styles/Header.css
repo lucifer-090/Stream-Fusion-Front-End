@@ -143,6 +143,11 @@
   background-color: #f0f0f0;
 }
 
+.category {
+  color: gray;
+  font-size: 12px;
+}
+
 /* Ensure the search container handles positioning */
 .search-bar-container {
   position: relative;
@@ -231,41 +236,6 @@
   font-weight: bold;
 }
 
-/* Navbar Icons */
-/* .nav-icon {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.nav-icon:hover {
-  transform: scale(1.1);
-} */
-
-/* Notification Icon Styling */
-/* .notification-icon {
-  position: relative;
-  margin-right: 5px;
-  margin-top: 3px;
-} */
-
-/* (Optional) Notification Badge for Unread Notifications */
-/* .notification-icon::after {
-  content: "3"; 
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: red;
-  color: white;
-  font-size: 12px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 
 /* Notification Icon */
 .notification-container {
@@ -346,12 +316,6 @@
   margin-bottom: 5px;
 }
 
-
-
-/* button.search-icon {
-  width: 40px;
-  height: 40px;
-} */
 
 /* Optional: Adjust the alignment for smaller screens */
 @media (max-width: 768px) {

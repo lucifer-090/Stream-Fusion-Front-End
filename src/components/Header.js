@@ -17,6 +17,7 @@ const Header = () => {
   const [notifications, setNotifications] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const searchRef = useRef(null);
 
   // Load user and notifications on component mount
   useEffect(() => {
@@ -25,11 +26,67 @@ const Header = () => {
 
     if (token && storedUser) {
       setUser(JSON.parse(storedUser));
-      
+
       localStorage.removeItem("notifications"); //  Clear old cached notifications
       fetchNotifications(); // Fetch fresh notifications
 
     }
+  }, []);
+
+  // 🔎 Fetch search suggestions dynamically
+  const fetchSuggestions = async (query) => {
+    if (query.length < 2) {
+      setSuggestions([]);
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:8080/videos/search?query=${query}`);
+      if (!response.ok) throw new Error("Failed to fetch suggestions");
+
+      const data = await response.json();
+      setSuggestions(data);
+    } catch (error) {
+      console.error("Error fetching search suggestions:", error);
+      setSuggestions([]); // Clear on error
+    }
+  };
+
+  // 🔄 Handle input change & fetch suggestions
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    fetchSuggestions(query);
+  };
+
+  // 🎯 Handle search selection
+  const handleSelect = (videoId) => {
+    navigate(`/videos/${videoId}`);
+    setSearchQuery("");
+    setSuggestions([]);
+  };
+
+  // 🚀 Handle search button click
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${searchQuery}`);
+      setSearchQuery(""); // Clears the search input after submitting
+      setSuggestions([]); // Hide suggestions
+    }
+  };
+  
+
+  // 📌 Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSuggestions([]);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
 
@@ -160,24 +217,21 @@ const Header = () => {
       </div>
 
       {location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/upload' && (
-        <div className="search-bar-container">
+        <div className="search-bar-container" ref={searchRef}> 
           <input
             type="text"
             placeholder="Search for a Video...."
             className="search-input"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={handleSearchChange}
           />
-          <button className="search-icon">🔍</button>
+          <button className="search-icon" onClick={handleSearchSubmit}>🔍</button>
+
           {suggestions.length > 0 && (
             <ul className="suggestions-list">
               {suggestions.map((video) => (
-                <li
-                  key={video.id}
-                  onClick={() => navigate(`/videos/${video.id}`)}
-                  className="suggestion-item"
-                >
-                  {video.title}
+                <li key={video.id} onClick={() => handleSelect(video.id)} className="suggestion-item">
+                  {video.title} <span className="category">({video.category || "unknown"})</span>
                 </li>
               ))}
             </ul>

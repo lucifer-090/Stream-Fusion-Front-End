@@ -1,0 +1,103 @@
+.search-list-container {
+    max-width: 95%;
+    margin-top: 100px;
+    margin-left: 40px;
+    color: #ffffff;
+    font-family: "Roboto", sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFFAC0;
+}
+
+.result-video-grid {
+    display: grid;
+    position: absolute;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 10px; /* Space between cards */
+    margin-right: 40px;
+}
+
+.result-video-card {
+    position: relative; /* For overlays */
+    background: #1e1e1e; /* Dark background */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden;
+    color: #fff;
+    text-align: left;
+    align-items: flex-start; /* Align items to the left */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.result-video-card:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.result-thumbnail-container {
+    width: 100%;
+    height: 170px; /* Fixed height for consistent layout */
+    overflow: hidden;
+    position: relative; /* For overlay */
+    border-radius: 8px;
+}
+
+.result-thumbnail-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    transition: transform 0.3s ease; /* Smooth scaling */
+}
+
+.Play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Ensure it appears above the video */
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease;
+}
+
+.result-thumbnail-container:hover .play-button {
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+    opacity: 2;
+  }
+
+.search-video-details {
+    padding: 10px;
+}
+
+.search-video-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFFAC0;
+    margin-bottom: 5px;
+}
+
+.search-video-description {
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.search-video-uploader {
+    font-size: 0.9rem;
+    font-style: italic; /* Add emphasis with italic styling */
+    color: #f0ac2db5; 
+    margin: 2px 0 0; /* Add some margin for spacing */
+    text-align: left; /* Align the text to the left */
+}
